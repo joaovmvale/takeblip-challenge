@@ -14,13 +14,17 @@ app.get("/crepositories", async (req, res) => {
     const response = {};
 
     // Criacao de um objeto com os dados do repositorio
+    let i = 0;
     filteredData.forEach((repo) => {
-      response[repo.name] = {
+      response[i] = {
         name: repo.full_name,
         description: repo.description,
+        // Nao era necessario, mas utilizei para garantir que todas as linguagens sejam C#
         language: repo.language,
+        // Nao era necessario, mas utilizei a data de criacao para garantir a ordem dos repositorios
         created_at: repo.created_at,
       };
+      i++;
     });
 
     res.send(response);
@@ -28,6 +32,8 @@ app.get("/crepositories", async (req, res) => {
     console.log(error);
   }
 });
+
+async function getlibraryData() {}
 
 const PORT = process.env.PORT || 5000;
 
