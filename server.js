@@ -1,28 +1,30 @@
+const axios = require("axios");
 const express = require("express");
 const app = express();
 
 const url = "https://api.github.com/orgs/takenet/repos";
 
-app.get("/getrepos"),
-  async (req, res) => {
-    try {
-      const response = await fetch(url);
-      const responseFiltered = response.filter(
-        (repo) => repo.language === "C#"
-      );
-      const data = {};
+app.get("/crepositories", async (req, res) => {
+  try {
+    // Requisicao e filtragem para retornar apenas os repositorios com a linguagem C#
+    const { data } = await axios(url);
+    const filteredData = data.filter((repo) => repo.language === "C#");
+    const response = {};
 
-      responseFiltered.forEach((repo) => {
-        Object.assign(data, {
-          [repo.full_name]: repo.description,
-        });
-      });
+    // Criacao de um objeto com os dados do repositorio
+    filteredData.forEach((repo) => {
+      response[repo.name] = {
+        name: repo.full_name,
+        description: repo.description,
+        language: repo.language,
+      };
+    });
 
-      return res.json(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    res.send(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 
