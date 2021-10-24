@@ -8,7 +8,9 @@ app.get("/crepositories", async (req, res) => {
   try {
     // Requisicao e filtragem para retornar apenas os repositorios com a linguagem C#
     const { data } = await axios(url);
-    const filteredData = data.filter((repo) => repo.language === "C#");
+    const filteredData = data
+      .filter((repo) => repo.language === "C#")
+      .slice(0, 5);
     const response = {};
 
     // Criacao de um objeto com os dados do repositorio
@@ -17,6 +19,7 @@ app.get("/crepositories", async (req, res) => {
         name: repo.full_name,
         description: repo.description,
         language: repo.language,
+        created_at: repo.created_at,
       };
     });
 
