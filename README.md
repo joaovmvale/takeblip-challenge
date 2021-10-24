@@ -32,3 +32,16 @@
 - O chatbot deve consumir a API intermediária.
 - O fluxo do chatbot deve ser exportado (.JSON) e inserido no repositório.
 - Enviar o link do repositório para análise.
+
+### Como utilizar a API
+
+- Clonar o repositorio
+- Instalar as seguintes bibliotecas:
+  - npm install express
+  - npm install axios
+- Acessar a pasta do repositorio
+  - Acessar a pasta "Api"
+- Instalar as dependencias
+  - npm i
+- Iniciar o projeto
+  - npm start
