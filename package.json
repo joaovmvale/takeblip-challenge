@@ -1,0 +1,15 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Joao Victo M.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "heroku-cli": "^7.0.9"
+  }
+}
